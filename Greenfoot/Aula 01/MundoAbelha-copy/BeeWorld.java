@@ -3,12 +3,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Definição da Classe BeeWorld.
  * 
- * @author Glenda Renata Silva
+ * @author Richard Brosler 
  * @version 2025-06-04
  */
 public class BeeWorld extends World
 {
-
+    //Fields
+    private int score;
+    private final int PONTOS = 100;
+    private Abelha abelha;
     /**
      * Constructor for objects of class BeeWorld.
      * 
@@ -18,8 +21,9 @@ public class BeeWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         prepare();
+        score = 0;
     }
-    
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -27,41 +31,44 @@ public class BeeWorld extends World
     private void prepare()
     {
         Aranha aranha = new Aranha();
-        addObject(aranha,30,35); 
-        
-        Abelha abelha = new Abelha();
-        addObject(abelha,34,199);
-        
-        Mosca mosca = new Mosca();
-        addObject(mosca,30,337);
-        
-        Mosca mosca2 = new Mosca();
-        addObject(mosca2,80,364);
-        mosca2.setLocation(83,305);
-        
-        Mosca mosca3 = new Mosca();
-        addObject(mosca3,83,305);
-        mosca2.setLocation(85,307);
-        
-        Mosca mosca4 = new Mosca();
-        addObject(mosca4,85,307);
-        
-        Mosca mosca5 = new Mosca();
-        addObject(mosca5,82,357);
-        
-        Mosca mosca6 = new Mosca();
-        addObject(mosca6,148,373);
-        
-        Mosca mosca7 = new Mosca();
-        addObject(mosca7,146,330);
-        
-        Mosca mosca8 = new Mosca();
-        addObject(mosca8,159,292);
-        
-        Mosca mosca9 = new Mosca();
-        addObject(mosca9,212,330);
-        mosca2.setLocation(85,305);
-        mosca2.setLocation(89,304);
-        mosca2.setLocation(224,375);
+        addObject(aranha,32,33);
+
+        abelha = new Abelha();
+        addObject(abelha,45,152);
+
+        for (int qtd=0; qtd<20; qtd++){
+            int posX = 
+                Greenfoot.getRandomNumber(800);
+            int posY = 
+                Greenfoot.getRandomNumber(600);
+            int vel = Greenfoot.getRandomNumber(3)+1;
+            int rot = 
+                Greenfoot.getRandomNumber(360)+1;
+            addObject(new Mosca(vel,rot), posX, posY);
+        }
+        //MOstrando texto
+        TextoColorido txt = new TextoColorido(
+                "Mensagem Teste",500,50,18, 
+                Color.BLUE, Color.GRAY
+            );
+       addObject(txt, 500, 50);
+
+    } 
+
+    //Acessador ou getter do Score
+    public int getScore(){
+        return score;
+    }
+
+    /**
+     * Método para atualizar o Score da Abelha
+     */
+    public void updateScore(){
+        score += PONTOS;//score = score + PONTOS
+        showText("Score: " + score, 100, 10);
+    }
+    //Acessador ou getter da Abelha
+    public Abelha getAbelha(){
+        return abelha;
     }
 }
