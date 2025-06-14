@@ -6,7 +6,7 @@ public class Exemplo01 {
 		// TODO Auto-generated method stub
         byte by = 127;//-128 a 127
         by +=2;
-        System.out.ptontln(by);
+        System.out.println(by);
         char letra = 'A';
         letra +=3;
         System.out.println(letra);
