@@ -1,0 +1,4 @@
+nome;idade;salario
+Roberval Da Silva;47;15000.00
+Maria Das Dores;38;4600.00
+Joaquim Da Silva;55;1800.00
